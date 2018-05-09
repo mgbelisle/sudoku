@@ -1,7 +1,7 @@
-fun parse(file: String) {
-    println(file)
+fun parse(file: String) List<List<String>> {
+    return listOf()
 }
 
 fun main(args: Array<String>) {
-    parse(args[0])
+    println(parse(args[0]))
 }
