@@ -6,17 +6,18 @@ fun main(args: Array<String>) {
 }
 
 fun solve(puzzle: List<Byte>): List<Byte> {
-    var possible = puzzle.map { if (it == 0.toByte()) (1..9).map { it.toByte() } .toSet() else setOf(it)}
+    var possible = puzzle.map { if (it == 0.toByte()) (1..9).map { it.toByte() }.toSet() else setOf(it) }
     while (true) {
-        var next = possible
-//        for (i in (0..80)) {
-//            if (next[i].size == 1) {
-//                for (buddy in buddies(i)) {
-//                    next[buddy] = next[buddy].drop(next[i].first())
-//                }
-//            }
-//        }
+        val next = possible.map { it.toMutableSet() }
+        for (i in (0..80)) {
+            if (next[i].size == 1) {
+                for (buddy in buddies(i)) {
+                    next[buddy].remove(next[i].first())
+                }
+            }
+        }
         if (next == possible) break
+        possible = next
     }
     return possible.map { if (it.size == 1) it.first() else 0 }
 }
@@ -32,15 +33,14 @@ fun buddies(i: Int): List<Int> {
         val row2 = it / 9
         val col2 = it % 9
         val box2 = 3 * (row2 / 3) + col2 / 3
-        it != i
-                && row == row2
+        it != i && (row == row2
                 || col == col2
-                || box == box2
+                || box == box2)
     }
 }
 
 fun puzzleToString(puzzle: List<Byte>): String {
-    return (0..71 step 9).map { puzzle.slice(it..it+9).joinToString(" ") } .joinToString("\n")
+    return (0..71 step 9).map { puzzle.slice(it..it + 9).joinToString(" ") }.joinToString("\n")
 }
 
 fun stringToPuzzle(v: String): List<Byte> {
