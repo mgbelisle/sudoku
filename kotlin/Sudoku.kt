@@ -6,7 +6,11 @@ fun main(args: Array<String>) {
 }
 
 fun solve(puzzle: List<Byte>): List<Byte> {
-    return puzzle
+    var possible: List<Set<Byte>> = puzzle.map { if (it == 0.toByte()) (1..9).map { it.toByte() } .toSet() else setOf(it)}
+    while (true) {
+        break
+    }
+    return possible.map { if (it.size == 1) it.first() else 0 }
 }
 
 /**
