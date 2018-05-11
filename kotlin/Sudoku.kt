@@ -6,9 +6,17 @@ fun main(args: Array<String>) {
 }
 
 fun solve(puzzle: List<Byte>): List<Byte> {
-    var possible: List<Set<Byte>> = puzzle.map { if (it == 0.toByte()) (1..9).map { it.toByte() } .toSet() else setOf(it)}
+    var possible = puzzle.map { if (it == 0.toByte()) (1..9).map { it.toByte() } .toSet() else setOf(it)}
     while (true) {
-        break
+        var next = possible
+//        for (i in (0..80)) {
+//            if (next[i].size == 1) {
+//                for (buddy in buddies(i)) {
+//                    next[buddy] = next[buddy].drop(next[i].first())
+//                }
+//            }
+//        }
+        if (next == possible) break
     }
     return possible.map { if (it.size == 1) it.first() else 0 }
 }
