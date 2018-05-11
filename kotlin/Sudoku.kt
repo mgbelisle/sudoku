@@ -33,9 +33,7 @@ fun buddies(i: Int): List<Int> {
         val row2 = it / 9
         val col2 = it % 9
         val box2 = 3 * (row2 / 3) + col2 / 3
-        it != i && (row == row2
-                || col == col2
-                || box == box2)
+        it != i && (row == row2 || col == col2 || box == box2)
     }
 }
 
