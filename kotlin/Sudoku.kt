@@ -28,7 +28,7 @@ fun buddies(i: Int): List<Int> {
 }
 
 fun puzzleToString(puzzle: List<Byte>): String {
-    return "foo"
+    return (0..71 step 9).map { puzzle.slice(it..it+9).joinToString(" ") } .joinToString("\n")
 }
 
 fun stringToPuzzle(v: String): List<Byte> {
