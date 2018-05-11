@@ -1,5 +1,14 @@
 import java.io.File
 
+
+fun main(args: Array<String>) {
+    println(puzzleToString(solve(stringToPuzzle(File(args[0]).readText()))))
+}
+
+fun solve(puzzle: List<Byte>): List<Byte> {
+    return puzzle
+}
+
 /**
  * Returns a list of indices that are in the same row, column, or box.
  */
@@ -18,10 +27,10 @@ fun buddies(i: Int): List<Int> {
     }
 }
 
-fun main(args: Array<String>) {
-    val puzzle = File(args[0]).readText().trim().split(regex = "\\s+".toRegex())
-            .map { if (it == "0") (1..9).toSet() else setOf(it.toByte()) }
-    for (i in (0..puzzle.size-1)) {
-        println("$i: ${buddies(i)}")
-    }
+fun puzzleToString(puzzle: List<Byte>): String {
+    return "foo"
+}
+
+fun stringToPuzzle(v: String): List<Byte> {
+    return v.trim().split(regex = "\\s+".toRegex()).map { it.toByte() }
 }
