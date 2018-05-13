@@ -2,7 +2,11 @@ import java.io.File
 
 
 fun main(args: Array<String>) {
-    println(puzzleToString(solve(stringToPuzzle(File(args[0]).readText()))))
+    val puzzle = stringToPuzzle(File(args[0]).readText())
+    if (puzzle.size != 81) {
+        throw IllegalArgumentException("Puzzle size (${puzzle.size}) != 81")
+    }
+    println(puzzleToString(solve(puzzle)))
 }
 
 fun solve(puzzle: List<Byte>): List<Byte> {
