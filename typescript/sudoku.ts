@@ -45,7 +45,7 @@ function solve(puzzle: number[]): number[] {
         possible = next;
     }
 
-    return possible.map(set => set.size === 1 ? Array.from(set)[0] : 0);
+    return possible.map(set => set.size === 1 ? set.values().next().value : 0);
 }
 
 console.log(puzzleToString(solve(stringToPuzzle(require('fs').readFileSync(0, 'utf-8')))));
